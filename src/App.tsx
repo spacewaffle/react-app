@@ -17,6 +17,9 @@ const App: React.FC = () => {
   }
   console.log(todos)
 
+  const [doneTodos, setDoneTodos] = useState<Todo[]>([])
+  
+
   return (
     <div className="App">
       <span className="heading">Taskify</span>
@@ -24,6 +27,8 @@ const App: React.FC = () => {
       <TodoList
         todos={todos}
         setTodos={setTodos}
+        doneTodos={doneTodos}
+        setDoneTodos={setDoneTodos}
       ></TodoList>
     </div>
   );
