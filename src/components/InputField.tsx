@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef} from 'react'
 
 interface Props{
     todo: string;
@@ -7,10 +7,19 @@ interface Props{
 }
 
 const InputField: React.FC<Props> = ({todo, setTodo, handleAdd}) => {
+
+  const inputRef = useRef<HTMLInputElement>(null)
   return (
-      <form onSubmit={handleAdd} className="input">
+      <form 
+        onSubmit={(e)=> {
+          handleAdd(e)
+          // inputRef.current?.blur()
+        }}
+        className="input"
+      >
           <input type="input"
             value={todo}
+            ref={inputRef}
             onChange={
                 (e)=>setTodo(e.target.value)
             }
